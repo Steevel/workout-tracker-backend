@@ -4,12 +4,16 @@ require('dotenv').config() // this method attaches the env variables to the proc
 const express = require('express')
 const mongoose = require('mongoose')
 const workoutRoutes = require('./routes/workouts')
+var cors = require('cors')
+
 
 // express app
 const app = express()
 
 // middleware
+app.use(cors())
 app.use(express.json())
+
 
 app.use((req, res, next) => {
     console.log(req.path, req.method);
